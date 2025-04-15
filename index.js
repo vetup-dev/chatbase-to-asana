@@ -27,7 +27,7 @@ app.post('/webhook', async (req, res) => {
       }
     });
 
-    res.status(200).send('✅ Tarefa criada no Asana!');
+    res.status(200).json({ message: '✅ Tarefa criada no Asana!' });
   } catch (error) {
     console.error('❌ Erro:', error.response?.data || error.message);
     res.status(500).send('Erro ao criar tarefa no Asana');
