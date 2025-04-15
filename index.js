@@ -8,7 +8,8 @@ const ASANA_TOKEN = '2/1142975042859069/1209987490122998:8054b5356ced9df07e039fb
 const PROJECT_ID = '1199649171692106';
 
 app.post('/webhook', async (req, res) => {
-  const pergunta = req.body.message || 'Sem conteúdo';
+  const pergunta = req.body?.message || JSON.stringify(req.body) || 'Mensagem não recebida corretamente';
+  console.log("📩 Corpo recebido:", req.body);
 
   try {
     await axios.post('https://app.asana.com/api/1.0/tasks', {
